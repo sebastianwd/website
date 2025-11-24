@@ -1,0 +1,15 @@
+{
+  "extends": "@repo/typescript-config/tsconfig.json",
+  "references": [
+    {
+      "path": "../typescript-config"
+    },
+    {
+      "path": "../eslint-config"
+    }
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

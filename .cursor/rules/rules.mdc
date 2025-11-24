@@ -1,0 +1,25 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Package and Application Rules
+
+## 1. Centralized Dependency Management
+
+All external dependencies used within any package or application in this workspace **MUST** have their versions defined in the `catalog` section of the `pnpm-workspace.yaml` file. This ensures a single source of truth for dependency versions across the monorepo, promoting consistency and simplifying updates.
+
+## 2. Standard Application Configuration
+
+Every application within this workspace **MUST** include the following development dependencies in its `package.json` to ensure consistent linting and TypeScript configuration:
+
+- `@repo/eslint-config`: `workspace:*`
+- `@repo/typescript-config`: `workspace:*`
+
+These configurations provide a standardized baseline for code quality and type checking, aligning with the monorepo's best practices.
+
+## 3. Internal Dependency References in TypeScript
+
+All internal dependencies (e.g., other packages within the monorepo) used by a project **MUST** be declared in the `references` array of that project's `tsconfig.json` file. This ensures proper TypeScript project references, enabling correct type checking, build processes, and IDE support across the monorepo.
+
+## 4. Don't make unnecessary changes or add unnecessary/obvious comments

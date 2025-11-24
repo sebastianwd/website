@@ -1,0 +1,43 @@
+{
+  "name": "@repo/api",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "lint": "eslint src/ --fix",
+    "tsc": "tsc --build",
+    "type-check": "tsc --noEmit",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio --verbose",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate"
+  },
+  "dependencies": {
+    "argon2": "catalog:",
+    "@libsql/client": "catalog:",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "@repo/utils": "workspace:*",
+    "@tanstack/react-start": "catalog:",
+    "@orpc/client": "catalog:",
+    "@orpc/server": "catalog:",
+    "@orpc/tanstack-query": "catalog:",
+    "drizzle-arktype": "catalog:",
+    "drizzle-kit": "catalog:",
+    "drizzle-orm": "catalog:",
+    "es-toolkit": "catalog:"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "catalog:",
+    "react": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/react": "catalog:",
+    "@types/node": "catalog:"
+  }
+}

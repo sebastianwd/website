@@ -1,0 +1,26 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**"],
+      "env": ["BETTER_AUTH_SECRET", "BETTER_AUTH_URL"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "tsc": {
+      "dependsOn": ["^tsc"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "ui:add": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

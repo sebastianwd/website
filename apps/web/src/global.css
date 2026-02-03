@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+@import 'animate.css';
+
+@import '../../../packages/ui/src/global.css';
+@source '../../../packages/ui';
+
+html,
+body {
+  @apply flex min-h-dvh flex-col dark:bg-gray-900 dark:text-gray-200;
+}
+
+@font-face {
+  font-family: 'clvtc';
+  src: url('/fonts/clvtc.otf') format('opentype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@theme {
+  --font-clvtc: 'clvtc', sans-serif;
+  --animate-audio-wave: audio-wave 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-marquee: marquee linear infinite alternate;
+}
+
+@keyframes audio-wave {
+  0%,
+  100% {
+    height: 4px;
+    transform: translateY(11px);
+  }
+  50% {
+    height: 26px;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  90%,
+  100% {
+    transform: translateX(var(--marquee-x));
+  }
+}

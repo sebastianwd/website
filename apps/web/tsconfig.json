@@ -1,0 +1,28 @@
+{
+  "references": [
+    {
+      "path": "../../packages/typescript-config"
+    },
+    {
+      "path": "../../packages/eslint-config"
+    },
+    {
+      "path": "../../packages/api"
+    },
+    {
+      "path": "../../packages/utils"
+    },
+    {
+      "path": "../../packages/ui"
+    }
+  ],
+  "compilerOptions": {
+    "noEmit": true,
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "extends": "@repo/typescript-config/tsconfig.react.json"
+}

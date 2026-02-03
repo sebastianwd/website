@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@iconify/react": "catalog:",
+    "@radix-ui/react-popover": "^1.1.15",
     "@tailwindcss/postcss": "catalog:",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",

@@ -3,6 +3,7 @@ description:
 globs:
 alwaysApply: true
 ---
+
 # Package and Application Rules
 
 ## 1. Centralized Dependency Management
@@ -23,3 +24,26 @@ These configurations provide a standardized baseline for code quality and type c
 All internal dependencies (e.g., other packages within the monorepo) used by a project **MUST** be declared in the `references` array of that project's `tsconfig.json` file. This ensures proper TypeScript project references, enabling correct type checking, build processes, and IDE support across the monorepo.
 
 ## 4. Don't make unnecessary changes or add unnecessary/obvious comments
+
+## 5. Shadcn UI
+
+Components based on radix-ui should utilize the "radix-ui" dependency instead of the individual packages, since this is an outdated practice.
+Example:
+
+```tsx
+import { Slot as SlotPrimitive } from 'radix-ui'
+```
+
+Shadcn UI components live in the `packages/ui` package. New components might be installed from the root directory using the `ui:add <component>` command.
+
+## 6. Linting
+
+Avoid linting simple errors like formatting errors, unused imports, etc. Until it is absolutely necessary to fix the error or the main task is finalized.
+
+## 7. Tanstack Start
+
+This project is a Tanstack Start project, so Next.js specific practices should be avoided. Like using `use client` in components.
+
+## 8. Icons
+
+Use the `@iconify/react` package to render icons. Don't use the `lucide-react` package for icons or other icon libraries.

@@ -66,21 +66,33 @@ catalogs:
     '@types/react-dom':
       specifier: ^19.2.2
       version: 19.2.2
+    '@upstash/redis':
+      specifier: ^1.36.1
+      version: 1.36.1
     '@vitejs/plugin-react':
       specifier: ^5.1.0
       version: 5.1.0
+    animate.css:
+      specifier: ^4.1.1
+      version: 4.1.1
     argon2:
       specifier: 0.31.2
       version: 0.31.2
     better-auth:
       specifier: ^1.3.34
       version: 1.3.34
+    cheerio:
+      specifier: ^1.2.0
+      version: 1.2.0
     class-variance-authority:
       specifier: ^0.7.1
       version: 0.7.1
     clsx:
       specifier: ^2.1.1
       version: 2.1.1
+    dayjs:
+      specifier: ^1.11.19
+      version: 1.11.19
     dotenv:
       specifier: ^17.2.3
       version: 17.2.3
@@ -105,6 +117,9 @@ catalogs:
     lucide-react:
       specifier: ^0.553.0
       version: 0.553.0
+    motion:
+      specifier: ^12.23.24
+      version: 12.23.24
     postcss:
       specifier: ^8.5.6
       version: 8.5.6
@@ -177,7 +192,7 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
-  apps/tanstack:
+  apps/web:
     dependencies:
       '@orpc/server':
         specifier: 'catalog:'
@@ -196,10 +211,13 @@ importers:
         version: 4.1.17(vite@7.2.2(@types/node@22.15.29)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.20.6))
       '@tanstack/nitro-v2-vite-plugin':
         specifier: 'catalog:'
-        version: 1.133.19(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8))(vite@7.2.2(@types/node@22.15.29)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.20.6))
+        version: 1.133.19(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8))(vite@7.2.2(@types/node@22.15.29)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.20.6))
       '@tanstack/react-devtools':
         specifier: 'catalog:'
         version: 0.8.1(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(csstype@3.1.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(solid-js@1.9.10)
+      '@tanstack/react-query':
+        specifier: 'catalog:'
+        version: 5.90.7(react@19.2.0)
       '@tanstack/react-router':
         specifier: 'catalog:'
         version: 1.134.15(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -215,9 +233,27 @@ importers:
       '@tanstack/router-plugin':
         specifier: 'catalog:'
         version: 1.134.15(@tanstack/react-router@1.134.15(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(vite@7.2.2(@types/node@22.15.29)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.20.6))
+      '@upstash/redis':
+        specifier: 'catalog:'
+        version: 1.36.1
+      animate.css:
+        specifier: 'catalog:'
+        version: 4.1.1
+      cheerio:
+        specifier: 'catalog:'
+        version: 1.2.0
+      dayjs:
+        specifier: 'catalog:'
+        version: 1.11.19
+      es-toolkit:
+        specifier: 'catalog:'
+        version: 1.41.0
       lucide-react:
         specifier: 'catalog:'
         version: 0.553.0(react@19.2.0)
+      motion:
+        specifier: 'catalog:'
+        version: 12.23.24(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react:
         specifier: 'catalog:'
         version: 19.2.0
@@ -311,13 +347,13 @@ importers:
         version: 17.2.3
       drizzle-arktype:
         specifier: 'catalog:'
-        version: 0.1.3(arktype@2.1.25)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8))
+        version: 0.1.3(arktype@2.1.25)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8))
       drizzle-kit:
         specifier: 'catalog:'
         version: 0.31.6
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.44.7(@libsql/client@0.15.15)(kysely@0.28.8)
+        version: 0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8)
       es-toolkit:
         specifier: 'catalog:'
         version: 1.41.0
@@ -357,6 +393,9 @@ importers:
       '@iconify/react':
         specifier: 'catalog:'
         version: 6.0.2(react@19.2.0)
+      '@radix-ui/react-popover':
+        specifier: ^1.1.15
+        version: 1.1.15(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@tailwindcss/postcss':
         specifier: 'catalog:'
         version: 4.1.17
@@ -2866,6 +2905,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@upstash/redis@1.36.1':
+    resolution: {integrity: sha512-N6SjDcgXdOcTAF+7uNoY69o7hCspe9BcA7YjQdxVu5d25avljTwyLaHBW3krWjrP0FfocgMk94qyVtQbeDp39A==}
+
   '@vercel/nft@0.30.3':
     resolution: {integrity: sha512-UEq+eF0ocEf9WQCV1gktxKhha36KDs7jln5qii6UpPf5clMqDc0p3E7d9l2Smx0i9Pm1qpq4S4lLfNl97bbv6w==}
     engines: {node: '>=18'}
@@ -2942,6 +2984,9 @@ packages:
 
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
+
+  animate.css@4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -3230,8 +3275,8 @@ packages:
   cheerio-select@2.1.0:
     resolution: {integrity: sha512-9v9kG0LvzrlcungtnJtpGNxY+fzECQKhK4EGJX2vByejiMX84MFNQw4UxPJl3bFbTMw+Dfs37XaIkCwTZfLh4g==}
 
-  cheerio@1.1.2:
-    resolution: {integrity: sha512-IkxPpb5rS/d1IiLbHMgfPuS0FgiWTtFIm/Nj+2woXDLTZ7fOT2eqzgYbdMlLweqlHbsZjxEChoVK+7iph7jyQg==}
+  cheerio@1.2.0:
+    resolution: {integrity: sha512-WDrybc/gKFpTYQutKIK6UvfcuxijIZfMfXaYm8NMsPQxSYvf+13fXUJ4rztGGbJcBQ/GF55gvrZ0Bc0bj/mqvg==}
     engines: {node: '>=20.18.1'}
 
   chokidar@3.6.0:
@@ -3397,6 +3442,9 @@ packages:
   data-view-byte-offset@1.0.1:
     resolution: {integrity: sha512-BS8PfmtDGnrgYdOonGZQdLZslWIeCGFP9tpan0hi1Co2Zr2NKADsvGYA8XxuG/4UWgJ6Cjtv+YJnB6MM69QGlQ==}
     engines: {node: '>= 0.4'}
+
+  dayjs@1.11.19:
+    resolution: {integrity: sha512-t5EcLVS6QPBNqM2z8fakk/NKel+Xzshgt8FFKAn+qwlD1pzZWxh0nVCrvFK7ZDb6XucZeF9z8C7CBWTRIVApAw==}
 
   db0@0.3.4:
     resolution: {integrity: sha512-RiXXi4WaNzPTHEOu8UPQKMooIbqOEyqA1t7Z6MsdxSCeb8iUC9ko3LcmsLmeUt2SM5bctfArZKkRQggKZz7JNw==}
@@ -3679,6 +3727,10 @@ packages:
 
   entities@6.0.0:
     resolution: {integrity: sha512-aKstq2TDOndCn4diEyp9Uq/Flu2i1GlLkc6XIDQSDMuaFE3OPW5OphLCyQ5SpSJZTb4reN+kTcYru5yIfXoRPw==}
+    engines: {node: '>=0.12'}
+
+  entities@7.0.1:
+    resolution: {integrity: sha512-TWrgLOFUQTH994YUyl1yT4uyavY5nNB5muff+RtWaqNVCAK408b5ZnnbNAUEWLTCpum9w6arT70i1XdQ4UeOPA==}
     engines: {node: '>=0.12'}
 
   error-stack-parser-es@1.0.5:
@@ -4051,6 +4103,20 @@ packages:
     resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==}
     engines: {node: '>=12.20.0'}
 
+  framer-motion@12.23.24:
+    resolution: {integrity: sha512-HMi5HRoRCTou+3fb3h9oTLyJGBxHfW+HnNE25tAXOvVx/IvwMHK0cx7IR4a2ZU6sh3IX1Z+4ts32PcYBOqka8w==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   fresh@2.0.0:
     resolution: {integrity: sha512-Rx/WycZ60HOaqLKAi6cHRKKI7zxWbJ31MhntmtwMoaTeF7XFH9hhBp8vITaMidfljRQ6eYWCKkaTK+ykVJHP2A==}
     engines: {node: '>= 0.8'}
@@ -4233,8 +4299,8 @@ packages:
     resolution: {integrity: sha512-Y22oTqIU4uuPgEemfz7NDJz6OeKf12Lsu+QC+s3BVpda64lTiMYCyGwg5ki4vFxkMwQdeZDl2adZoqUgdFuTgQ==}
     engines: {node: '>=18'}
 
-  htmlparser2@10.0.0:
-    resolution: {integrity: sha512-TwAZM+zE5Tq3lrEHvOlvwgj1XLWQCtaaibSN11Q+gGBAS7Y1uZSWwXXRe4iF6OXnaq1riyQAPFOBtYc77Mxq0g==}
+  htmlparser2@10.1.0:
+    resolution: {integrity: sha512-VTZkM9GWRAtEpveh7MSF6SjjrpNVNNVJfFup7xTY3UpFtm67foy9HDVXneLtFVt4pMz5kZtgNcvCniNFb1hlEQ==}
 
   http-errors@2.0.0:
     resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
@@ -4788,6 +4854,26 @@ packages:
 
   mlly@1.8.0:
     resolution: {integrity: sha512-l8D9ODSRWLe2KHJSifWGwBqpTZXIXTeo8mlKjY+E2HAakaTeNpqAyBZ8GSqLzHgw4XmHmC8whvpjJNMbFZN7/g==}
+
+  motion-dom@12.23.23:
+    resolution: {integrity: sha512-n5yolOs0TQQBRUFImrRfs/+6X4p3Q4n1dUEqt/H58Vx7OW6RF+foWEgmTVDhIWJIMXOuNNL0apKH2S16en9eiA==}
+
+  motion-utils@12.23.6:
+    resolution: {integrity: sha512-eAWoPgr4eFEOFfg2WjIsMoqJTW6Z8MTUCgn/GZ3VRpClWBdnbjryiA3ZSNLyxCTmCQx4RmYX6jX1iWHbenUPNQ==}
+
+  motion@12.23.24:
+    resolution: {integrity: sha512-Rc5E7oe2YZ72N//S3QXGzbnXgqNrTESv8KKxABR20q2FLch9gHLo0JLyYo2hZ238bZ9Gx6cWhj9VO0IgwbMjCw==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -5802,8 +5888,8 @@ packages:
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
-  undici@7.16.0:
-    resolution: {integrity: sha512-QEg3HPMll0o3t2ourKwOeUAZ159Kn9mx5pnzHRQO8+Wixmh88YdZRiIwat0iNzNNXn0yoEtXJqFpyW7eM8BV7g==}
+  undici@7.19.2:
+    resolution: {integrity: sha512-4VQSpGEGsWzk0VYxyB/wVX/Q7qf9t5znLRgs0dzszr9w9Fej/8RVNQ+S20vdXSAyra/bJ7ZQfGv6ZMj7UEbzSg==}
     engines: {node: '>=20.18.1'}
 
   unenv@2.0.0-rc.24:
@@ -6055,6 +6141,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
@@ -8280,9 +8367,9 @@ snapshots:
 
   '@tanstack/history@1.133.28': {}
 
-  '@tanstack/nitro-v2-vite-plugin@1.133.19(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8))(vite@7.2.2(@types/node@22.15.29)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.20.6))':
+  '@tanstack/nitro-v2-vite-plugin@1.133.19(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8))(vite@7.2.2(@types/node@22.15.29)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.20.6))':
     dependencies:
-      nitropack: 2.12.9(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8))
+      nitropack: 2.12.9(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8))
       pathe: 2.0.3
       vite: 7.2.2(@types/node@22.15.29)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.20.6)
     transitivePeerDependencies:
@@ -8555,7 +8642,7 @@ snapshots:
       '@tanstack/start-client-core': 1.134.15
       '@tanstack/start-server-core': 1.134.15
       babel-dead-code-elimination: 1.0.10
-      cheerio: 1.1.2
+      cheerio: 1.2.0
       exsolve: 1.0.7
       pathe: 2.0.3
       srvx: 0.8.16
@@ -8825,6 +8912,10 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.10.1':
     optional: true
 
+  '@upstash/redis@1.36.1':
+    dependencies:
+      uncrypto: 0.1.3
+
   '@vercel/nft@0.30.3(rollup@4.53.1)':
     dependencies:
       '@mapbox/node-pre-gyp': 2.0.0
@@ -8927,6 +9018,8 @@ snapshots:
       fast-json-stable-stringify: 2.1.0
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
+
+  animate.css@4.1.1: {}
 
   ansi-regex@5.0.1: {}
 
@@ -9270,18 +9363,18 @@ snapshots:
       domhandler: 5.0.3
       domutils: 3.2.2
 
-  cheerio@1.1.2:
+  cheerio@1.2.0:
     dependencies:
       cheerio-select: 2.1.0
       dom-serializer: 2.0.0
       domhandler: 5.0.3
       domutils: 3.2.2
       encoding-sniffer: 0.2.1
-      htmlparser2: 10.0.0
+      htmlparser2: 10.1.0
       parse5: 7.3.0
       parse5-htmlparser2-tree-adapter: 7.1.0
       parse5-parser-stream: 7.1.2
-      undici: 7.16.0
+      undici: 7.19.2
       whatwg-mimetype: 4.0.0
 
   chokidar@3.6.0:
@@ -9444,10 +9537,12 @@ snapshots:
       es-errors: 1.3.0
       is-data-view: 1.0.2
 
-  db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8)):
+  dayjs@1.11.19: {}
+
+  db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8)):
     optionalDependencies:
       '@libsql/client': 0.15.15
-      drizzle-orm: 0.44.7(@libsql/client@0.15.15)(kysely@0.28.8)
+      drizzle-orm: 0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8)
 
   debug@3.2.7:
     dependencies:
@@ -9533,10 +9628,10 @@ snapshots:
 
   dotenv@17.2.3: {}
 
-  drizzle-arktype@0.1.3(arktype@2.1.25)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8)):
+  drizzle-arktype@0.1.3(arktype@2.1.25)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8)):
     dependencies:
       arktype: 2.1.25
-      drizzle-orm: 0.44.7(@libsql/client@0.15.15)(kysely@0.28.8)
+      drizzle-orm: 0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8)
 
   drizzle-kit@0.31.6:
     dependencies:
@@ -9547,9 +9642,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8):
+  drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8):
     optionalDependencies:
       '@libsql/client': 0.15.15
+      '@upstash/redis': 1.36.1
       kysely: 0.28.8
 
   dunder-proto@1.0.1:
@@ -9585,6 +9681,8 @@ snapshots:
   entities@4.5.0: {}
 
   entities@6.0.0: {}
+
+  entities@7.0.1: {}
 
   error-stack-parser-es@1.0.5: {}
 
@@ -10153,6 +10251,15 @@ snapshots:
     dependencies:
       fetch-blob: 3.2.0
 
+  framer-motion@12.23.24(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+    dependencies:
+      motion-dom: 12.23.23
+      motion-utils: 12.23.6
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+
   fresh@2.0.0: {}
 
   fs-minipass@2.1.0:
@@ -10353,12 +10460,12 @@ snapshots:
     dependencies:
       whatwg-encoding: 3.1.1
 
-  htmlparser2@10.0.0:
+  htmlparser2@10.1.0:
     dependencies:
       domelementtype: 2.3.0
       domhandler: 5.0.3
       domutils: 3.2.2
-      entities: 6.0.0
+      entities: 7.0.1
 
   http-errors@2.0.0:
     dependencies:
@@ -10912,6 +11019,20 @@ snapshots:
       pkg-types: 1.3.1
       ufo: 1.6.1
 
+  motion-dom@12.23.23:
+    dependencies:
+      motion-utils: 12.23.6
+
+  motion-utils@12.23.6: {}
+
+  motion@12.23.24(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+    dependencies:
+      framer-motion: 12.23.24(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+
   ms@2.1.3: {}
 
   nanoid@3.3.11: {}
@@ -10922,7 +11043,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  nitropack@2.12.9(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8)):
+  nitropack@2.12.9(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8)):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.0
       '@rollup/plugin-alias': 5.1.1(rollup@4.53.1)
@@ -10943,7 +11064,7 @@ snapshots:
       cookie-es: 2.0.0
       croner: 9.1.0
       crossws: 0.3.5
-      db0: 0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8))
+      db0: 0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8))
       defu: 6.1.4
       destr: 2.0.5
       dot-prop: 10.1.0
@@ -10989,7 +11110,7 @@ snapshots:
       unenv: 2.0.0-rc.24
       unimport: 5.5.0
       unplugin-utils: 0.3.1
-      unstorage: 1.17.2(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8)))(ioredis@5.8.2)
+      unstorage: 1.17.2(@upstash/redis@1.36.1)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8)))(ioredis@5.8.2)
       untyped: 2.0.0
       unwasm: 0.3.11
       youch: 4.1.0-beta.12
@@ -12134,7 +12255,7 @@ snapshots:
 
   undici-types@6.21.0: {}
 
-  undici@7.16.0: {}
+  undici@7.19.2: {}
 
   unenv@2.0.0-rc.24:
     dependencies:
@@ -12195,7 +12316,7 @@ snapshots:
       '@unrs/resolver-binding-win32-ia32-msvc': 1.10.1
       '@unrs/resolver-binding-win32-x64-msvc': 1.10.1
 
-  unstorage@1.17.2(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8)))(ioredis@5.8.2):
+  unstorage@1.17.2(@upstash/redis@1.36.1)(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8)))(ioredis@5.8.2):
     dependencies:
       anymatch: 3.1.3
       chokidar: 4.0.3
@@ -12206,7 +12327,8 @@ snapshots:
       ofetch: 1.5.1
       ufo: 1.6.1
     optionalDependencies:
-      db0: 0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(kysely@0.28.8))
+      '@upstash/redis': 1.36.1
+      db0: 0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.44.7(@libsql/client@0.15.15)(@upstash/redis@1.36.1)(kysely@0.28.8))
       ioredis: 5.8.2
 
   untun@0.1.3:

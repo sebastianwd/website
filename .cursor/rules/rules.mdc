@@ -47,3 +47,7 @@ This project is a Tanstack Start project, so Next.js specific practices should b
 ## 8. Icons
 
 Use the `@iconify/react` package to render icons. Don't use the `lucide-react` package for icons or other icon libraries.
+
+## 9. API routes
+
+Prefer implementing API logic in the oRPC routers (`packages/api/src/routers/index.ts`) rather than adding separate TanStack Start server route handlers. Use the existing `/api/rpc` handler and extend the router with new procedures; add file-based API routes (e.g. under `apps/web/src/routes/api/`) only when you need raw HTTP semantics (e.g. specific methods, headers, or non-JSON responses).

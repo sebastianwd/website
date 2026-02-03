@@ -73,12 +73,12 @@ export const FeaturedProject = (props: Props) => {
   return (
     <div className='flex flex-col flex-wrap md:flex-row md:flex-nowrap md:gap-5'>
       {orientation === 'left' ? (
-        <Surface className='flex shrink-0 grow basis-full items-center overflow-hidden p-4 md:basis-80'>
+        <Surface className='flex shrink-0 grow basis-full items-center overflow-hidden p-4 md:basis-2/5'>
           <ProjectCard title={title} media={media} href={repo} className='w-full' />
         </Surface>
       ) : null}
       <div className='rounded-lg border border-dashed border-neutral-700/75 px-5 py-6'>
-        <h3 className='font-clvtc mb-2 text-2xl text-accent'>{title}</h3>
+        <h3 className='mb-2 font-clvtc text-2xl text-accent'>{title}</h3>
         <p className='mb-3 text-sm'>{description}</p>
         <div className='mb-7 flex'>
           <p className='mr-2 flex items-center text-sm'>
@@ -129,7 +129,7 @@ export const FeaturedProject = (props: Props) => {
         </div>
       </div>
       {orientation === 'right' ? (
-        <Surface className='order-first flex shrink-0 grow basis-full items-center overflow-hidden p-4 md:order-last md:basis-80'>
+        <Surface className='order-first flex shrink-0 grow basis-full items-center overflow-hidden p-4 md:order-last md:basis-2/5'>
           <ProjectCard title={title} media={media} href={repo} className='w-full' />
         </Surface>
       ) : null}

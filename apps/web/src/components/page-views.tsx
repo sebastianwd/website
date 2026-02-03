@@ -1,15 +1,11 @@
+import { client, orpc } from '@repo/api/lib/orpc.client'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 
-interface PageViewsData {
-  total: number
-  unique: number
-}
-
 function useTrackPageView(slug: string) {
   useEffect(() => {
-    if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
-      navigator.sendBeacon('/api/page-view', JSON.stringify({ slug }))
+    if (typeof window !== 'undefined') {
+      void client.pageView.track({ slug })
     }
   }, [slug])
 }
@@ -17,9 +13,9 @@ function useTrackPageView(slug: string) {
 export function PageViews({ slug = '/' }: { slug?: string }) {
   useTrackPageView(slug)
 
-  const { data, error, isLoading } = useQuery<PageViewsData>({
-    queryKey: ['page-views', slug],
-    queryFn: () => fetch(`/api/page-view?${new URLSearchParams({ slug })}`).then((res) => res.json()),
+  const { data, error, isLoading } = useQuery({
+    ...orpc.pageView.get.queryOptions({ input: { slug } }),
+    enabled: typeof window !== 'undefined',
     staleTime: 1000 * 60 * 5
   })
 

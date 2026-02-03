@@ -112,7 +112,7 @@ function App() {
           </div>
         </div>
         <div>
-          <Surface className='flex flex-wrap items-center justify-center gap-6 px-6 py-4 md:justify-between'>
+          <Surface className='flex flex-wrap items-center justify-center gap-6 px-6 py-4 lg:justify-between'>
             {[
               { icon: '/assets/react.svg', label: 'React' },
               { icon: '/assets/typescript.svg', label: 'TypeScript' },

@@ -19,6 +19,7 @@
     "argon2": "catalog:",
     "@libsql/client": "catalog:",
     "better-auth": "catalog:",
+    "dayjs": "catalog:",
     "dotenv": "catalog:",
     "@repo/utils": "workspace:*",
     "@tanstack/react-start": "catalog:",
@@ -28,7 +29,9 @@
     "drizzle-arktype": "catalog:",
     "drizzle-kit": "catalog:",
     "drizzle-orm": "catalog:",
-    "es-toolkit": "catalog:"
+    "es-toolkit": "catalog:",
+    "@upstash/redis": "catalog:",
+    "zod": "catalog:"
   },
   "peerDependencies": {
     "@tanstack/react-query": "catalog:",

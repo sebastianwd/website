@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
-    "serve": "vite preview",
-    "test": "vitest run"
+    "serve": "node .output/server/index.mjs",
+    "test": "vitest run",
+    "start": "node .output/server/index.mjs"
   },
   "dependencies": {
     "animate.css": "catalog:",

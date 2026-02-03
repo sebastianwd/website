@@ -68,11 +68,11 @@ function TechItem({ icon, label }: { icon: string; label: string }) {
 
 function App() {
   useSuspenseQuery(orpc.example.queryOptions())
-  const experience = useMemo(
-    () =>
-      experienceData.map((e) => ({ company: atob(e.company), description: atob(e.description), year: atob(e.year) })),
-    []
-  )
+  const experience = experienceData.map((e) => ({
+    company: atob(e.company),
+    description: atob(e.description),
+    year: atob(e.year)
+  }))
 
   return (
     <div className='relative overflow-hidden'>

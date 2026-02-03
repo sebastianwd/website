@@ -5,7 +5,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "tsc": "turbo run tsc"
+    "tsc": "turbo run tsc",
+    "start": "turbo run start"
   },
   "devDependencies": {
     "@types/node": "catalog:",

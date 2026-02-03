@@ -1,4 +1,3 @@
-import argon2 from 'argon2'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { username } from 'better-auth/plugins'
@@ -18,11 +17,7 @@ export const auth = betterAuth({
     }
   },
   emailAndPassword: {
-    enabled: true,
-    password: {
-      hash: argon2.hash,
-      verify: (data) => argon2.verify(data.hash, data.password)
-    }
+    enabled: true
   },
   plugins: [username()],
   session: {

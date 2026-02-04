@@ -33,7 +33,8 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "tailwindcss": "catalog:",
-    "vite-tsconfig-paths": "catalog:"
+    "vite-tsconfig-paths": "catalog:",
+    "nitro": "npm:nitro-nightly@latest"
   },
   "devDependencies": {
     "@iconify/react": "catalog:",

@@ -64,7 +64,7 @@ catalog:
   usehooks-ts: ^3.1.1
   vinxi: ^0.5.11
   vite: ^7.3.1
-  vite-tsconfig-paths: ^6.0.5
+  vite-tsconfig-paths: ^5.1.4
   vitest: ^4.0.18
   web-vitals: 5.1.0
   zod: ^4.1.12

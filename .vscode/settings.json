@@ -5,4 +5,14 @@
     }
   ],
   "typescript.tsdk": "node_modules\\typescript\\lib",
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true,
+    "**/.tanstack/**/*": true,
+    "pnpm-lock.yaml": true,
+  },
+  "search.exclude": {
+    "**/routeTree.gen.ts": true,
+    "**/.tanstack/**/*": true,
+    "pnpm-lock.yaml": true,
+  },
 }

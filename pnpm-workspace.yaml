@@ -5,6 +5,7 @@ packages:
 catalog:
   '@iconify/react': ^6.0.2
   '@libsql/client': ^0.15.15
+  '@cloudflare/vite-plugin': ^1.23.0
   '@orpc/client': ^1.10.4
   '@orpc/server': ^1.10.4
   '@orpc/tanstack-query': ^1.10.4
@@ -51,8 +52,8 @@ catalog:
   postcss: ^8.5.6
   prettier: ^3.6.2
   radix-ui: ^1.4.3
-  react: ^19.2.0
-  react-dom: ^19.2.0
+  react: ^19.2.4
+  react-dom: ^19.2.4
   superjson: ^2.2.5
   swd-eslint-config: 2.3.1
   tailwind-merge: ^3.3.1
@@ -63,10 +64,10 @@ catalog:
   typescript-eslint: ^8.46.3
   usehooks-ts: ^3.1.1
   vinxi: ^0.5.11
-  vite: ^7.3.1
-  vite-tsconfig-paths: ^5.1.4
+  vite: ^8.0.0-beta.12
   vitest: ^4.0.18
   web-vitals: 5.1.0
+  wrangler: ^4.62.0
   zod: ^4.1.12
   '@upstash/redis': ^1.36.1
   dayjs: ^1.11.19

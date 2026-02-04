@@ -5,38 +5,38 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
-    "serve": "node .output/server/index.mjs",
-    "test": "vitest run",
-    "start": "node .output/server/index.mjs"
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types",
+    "test": "vitest run"
   },
   "dependencies": {
-    "animate.css": "catalog:",
-    "cheerio": "catalog:",
-    "dayjs": "catalog:",
-    "es-toolkit": "catalog:",
     "@orpc/server": "catalog:",
-    "@upstash/redis": "catalog:",
-    "motion": "catalog:",
     "@orpc/tanstack-query": "catalog:",
-    "@tanstack/react-query": "catalog:",
     "@repo/api": "workspace:*",
     "@repo/ui": "workspace:*",
     "@tailwindcss/vite": "catalog:",
     "@tanstack/nitro-v2-vite-plugin": "catalog:",
     "@tanstack/react-devtools": "catalog:",
+    "@tanstack/react-query": "catalog:",
     "@tanstack/react-router": "catalog:",
     "@tanstack/react-router-devtools": "catalog:",
     "@tanstack/react-router-ssr-query": "catalog:",
     "@tanstack/react-start": "catalog:",
     "@tanstack/router-plugin": "catalog:",
+    "@upstash/redis": "catalog:",
+    "animate.css": "catalog:",
+    "cheerio": "catalog:",
+    "dayjs": "catalog:",
+    "es-toolkit": "catalog:",
     "lucide-react": "catalog:",
+    "motion": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "tailwindcss": "catalog:",
-    "vite-tsconfig-paths": "catalog:",
-    "nitro": "npm:nitro-nightly@latest"
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "catalog:",
     "@iconify/react": "catalog:",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
@@ -51,6 +51,7 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:",
-    "web-vitals": "catalog:"
+    "web-vitals": "catalog:",
+    "wrangler": "catalog:"
   }
 }

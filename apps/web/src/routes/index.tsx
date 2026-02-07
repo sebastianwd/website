@@ -5,7 +5,7 @@ import { cn } from '@repo/ui/utils/cn'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'motion/react'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import { BackgroundPattern } from '~/components/background-pattern'
 import { FeaturedProject } from '~/components/featured-project'
@@ -14,7 +14,7 @@ import { Surface } from '~/components/surface'
 import { WordAnimator } from '~/components/word-animator'
 import { projects } from '~/data/projects'
 
-loadIcons(['mdi:linkedin', 'mdi:github', 'mdi:email', 'mdi:open-in-new'])
+const SOCIAL_ICONS = ['mdi:linkedin', 'mdi:github', 'mdi:email', 'mdi:open-in-new'] as const
 
 const SOCIALS = {
   linkedin: 'aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3NlYmFzdGlhbi1sdXF1ZS04OTFiOTAxODUv',
@@ -68,6 +68,9 @@ function TechItem({ icon, label }: { icon: string; label: string }) {
 
 function App() {
   useSuspenseQuery(orpc.example.queryOptions())
+  useEffect(() => {
+    loadIcons([...SOCIAL_ICONS])
+  }, [])
   const experience = experienceData.map((e) => ({
     company: atob(e.company),
     description: atob(e.description),
@@ -78,7 +81,7 @@ function App() {
     <div className='relative overflow-hidden'>
       <section className='container mx-auto px-6 pt-10 pb-20 lg:max-w-5xl'>
         <BackgroundPattern />
-        <div className='mb-12'>
+        <div className='relative mb-12'>
           <div className='flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between'>
             <div className='flex flex-1 flex-col gap-5'>
               <h1 className='font-clvtc text-4xl'>Full Stack developer & Frontend specialist</h1>
@@ -111,7 +114,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div>
+        <div className='relative'>
           <Surface className='flex flex-wrap items-center justify-center gap-6 px-6 py-4 lg:justify-between'>
             {[
               { icon: '/assets/react.svg', label: 'React' },
@@ -127,7 +130,7 @@ function App() {
           </Surface>
         </div>
 
-        <div className='mt-16'>
+        <div className='relative mt-16'>
           <WordAnimator
             tag='h2'
             words='Experience'
@@ -158,7 +161,7 @@ function App() {
           </div>
         </div>
 
-        <div className='mt-16'>
+        <div className='relative mt-16'>
           <div className='mb-2 flex h-9 font-clvtc text-3xl tracking-wider'>
             <h2 className='font-clvtc text-3xl tracking-wider'>Side&nbsp;</h2>
             <WordAnimator tag='span' words='Projects' className='text-accent' delay={60} />

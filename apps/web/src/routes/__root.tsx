@@ -28,6 +28,8 @@ export const Route = createRootRouteWithContext<RootRouteContext>()({
     ],
     links: [
       { rel: 'preload', href: '/fonts/clvtc.otf', as: 'font', type: 'font/otf', crossOrigin: 'anonymous' },
+      { rel: 'preload', href: '/gradient.webp', as: 'image' },
+      { rel: 'preload', href: '/assets/bg-artwork.png', as: 'image' },
       { rel: 'stylesheet', href: appCss, blocking: 'render' }
     ]
   }),
@@ -52,17 +54,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Header />
         {children}
         <Footer />
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right'
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />
-            }
-          ]}
-        />
+        {import.meta.env.DEV && (
+          <TanStackDevtools
+            config={{
+              position: 'bottom-right'
+            }}
+            plugins={[
+              {
+                name: 'Tanstack Router',
+                render: <TanStackRouterDevtoolsPanel />
+              }
+            ]}
+          />
+        )}
         <Scripts />
       </body>
     </html>

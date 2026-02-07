@@ -15,7 +15,7 @@ export const projects = [
     title: 'RedditGrab',
     media: {
       type: 'video' as const,
-      url: '/assets/redditgrab-pres.webm'
+      url: '/assets/redditgrab-pres.mp4'
     },
     description:
       'A Chrome/Firefox extension that allows you to download images and videos from Reddit in an automated way. Over 1000 downloads.',

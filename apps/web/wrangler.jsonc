@@ -9,4 +9,11 @@
     "observability": {
         "enabled": true,
     },
+    "routes": [
+        {
+            "zone_name": "sebastiangx.com",
+            "pattern": "sebastiangx.com",
+            "custom_domain": true
+        }
+    ],
 }

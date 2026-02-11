@@ -16,11 +16,21 @@
       "path": "../../packages/ui"
     }
   ],
+  "include": [
+    "*.ts",
+    "*.tsx",
+    "*.mjs",
+    "src/**/*",
+    ".source/**/*"
+  ],
   "compilerOptions": {
     "noEmit": true,
     "paths": {
       "~/*": [
         "./src/*"
+      ],
+      "fumadocs-mdx:collections/*": [
+        "./.source/*"
       ]
     }
   },

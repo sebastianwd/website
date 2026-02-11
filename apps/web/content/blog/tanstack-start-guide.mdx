@@ -1,0 +1,66 @@
+---
+title: Building Modern Web Apps with TanStack Start
+description: An in-depth look at TanStack Start, the full-stack React framework that's changing how we build web applications.
+author: Sebastian Luque
+date: 2026-02-09
+---
+
+## Introduction to TanStack Start
+
+TanStack Start is a full-stack React framework that combines the power of TanStack Router with server-side rendering capabilities. It's designed to give you the flexibility and control you need while maintaining excellent developer experience.
+
+## Why Choose TanStack Start?
+
+### Type Safety First
+
+One of the biggest advantages is the incredible type safety throughout your entire application:
+
+```typescript
+// Your routes are fully typed
+const route = createFileRoute('/blog/$slug')({
+  loader: async ({ params }) => {
+    // params.slug is typed!
+    const post = await fetchPost(params.slug)
+    return post
+  }
+})
+```
+
+### File-Based Routing
+
+TanStack Start uses a file-based routing system that's intuitive and powerful. Each file in your `routes` directory automatically becomes a route in your application.
+
+### Server Functions
+
+Server functions allow you to write server-side code right next to your client code:
+
+```typescript
+const serverLoader = createServerFn({
+  method: 'GET'
+}).handler(async () => {
+  // This runs on the server only
+  const data = await db.query('...')
+  return data
+})
+```
+
+## Key Features
+
+1. **SSR & SSG Support**: Full support for server-side rendering and static site generation
+2. **Streaming**: Built-in support for React streaming
+3. **Flexible Deployment**: Deploy to Vercel, Cloudflare Workers, or any Node.js environment
+4. **Developer Experience**: Hot module replacement, TypeScript support, and excellent error messages
+
+## Getting Started
+
+Setting up a new TanStack Start project is straightforward:
+
+```bash
+pnpm create @tanstack/start
+```
+
+That's it! You'll have a fully configured project ready to go.
+
+## Conclusion
+
+TanStack Start represents a new approach to full-stack React development. It gives you the power and flexibility you need without sacrificing developer experience. If you're looking for an alternative to Next.js or Remix, definitely give it a try!

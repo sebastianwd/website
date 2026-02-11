@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react'
 import { Button } from '@repo/ui/components/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@repo/ui/components/popover'
+import { Link } from '@tanstack/react-router'
 import { clamp } from 'es-toolkit'
 import { motion, useMotionValue, useMotionValueEvent, useScroll, useTransform } from 'motion/react'
 import { useEffect, useState } from 'react'
@@ -108,6 +109,13 @@ export default function Header() {
               >
                 <img src='/logo-small.svg' alt='Logo' className='h-16 w-auto' />
                 <div className='flex-1' />
+                <Link
+                  to='/blog'
+                  className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-zinc-300 transition-colors hover:text-accent'
+                >
+                  <Icon icon='mdi:post-outline' className='size-5' />
+                  <span className='hidden sm:inline'>Blog</span>
+                </Link>
                 <ColorPicker />
               </motion.div>
             </motion.div>

@@ -4,6 +4,62 @@ import { createServerFn } from '@tanstack/react-start'
 import { Surface } from '~/components/surface'
 import { WordAnimator } from '~/components/word-animator'
 
+function titleWithAccent(title: string) {
+  const words = title.trim().split(/\s+/)
+  if (words.length <= 2) return { lead: '', accent: title }
+  const accentCount = Math.min(2, words.length)
+  const accentStart = words.length - accentCount
+  return {
+    lead: words.slice(0, accentStart).join(' '),
+    accent: words.slice(accentStart).join(' ')
+  }
+}
+
+function BlogCard({
+  post
+}: {
+  post: {
+    url: string
+    title: string
+    description: string
+    date: string | Date
+    image?: string
+  }
+}) {
+  const { lead, accent } = titleWithAccent(post.title)
+  const dateFormatted = new Date(post.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  })
+
+  return (
+    <Link key={post.url} to={post.url} className='block'>
+      <div className='flex flex-col gap-4 transition-all duration-200 hover:translate-y-[-2px]'>
+        <Surface className='overflow-hidden'>
+          <div className='relative aspect-16/10 w-full bg-zinc-900'>
+            {post.image ? (
+              <img src={post.image} alt='' className='absolute inset-0 size-full object-cover' />
+            ) : (
+              <div className='flex size-full items-center justify-center text-zinc-600' />
+            )}
+          </div>
+        </Surface>
+        <div className='flex flex-col gap-2'>
+          <h2 className='text-lg leading-snug font-semibold text-white'>
+            {lead && <span>{lead} </span>}
+            <span className='text-accent'>{accent}</span>
+          </h2>
+          <p className='line-clamp-2 text-sm text-zinc-400'>{post.description}</p>
+          <time dateTime={new Date(post.date).toISOString()} className='text-xs text-zinc-500'>
+            {dateFormatted}
+          </time>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
 export const Route = createFileRoute('/blog/')({
   component: BlogIndex,
   loader: async () => {
@@ -23,7 +79,8 @@ const serverLoader = createServerFn({
       title: post.data.title,
       description: post.data.description,
       author: post.data.author,
-      date: post.data.date
+      date: post.data.date,
+      image: post.data.image
     }))
   }
 })
@@ -35,28 +92,15 @@ function BlogIndex() {
     <div className='relative overflow-hidden'>
       <section className='container mx-auto px-6 pt-10 pb-20 lg:max-w-5xl'>
         <div className='mb-8'>
-          <WordAnimator tag='h1' words='Blog' className='font-clvtc mb-4 h-12 text-4xl tracking-wider text-accent' />
-          <p className='text-zinc-300'>Thoughts, tutorials, and insights about web development.</p>
+          <h1 className='mb-4 flex flex-wrap items-center gap-x-1 font-clvtc text-4xl tracking-wider text-accent'>
+            <WordAnimator tag='span' words='Blog' className='h-9 text-accent' />
+          </h1>
+          <p className='text-zinc-300'>Some of my experiences and learnings about web development.</p>
         </div>
 
-        <div className='grid gap-6 md:grid-cols-2'>
+        <div className='grid gap-6 sm:grid-cols-2 md:grid-cols-3'>
           {posts.map((post) => (
-            <Link key={post.url} to={post.url}>
-              <Surface className='h-full p-6 transition-all duration-200 hover:border-accent hover:shadow-lg hover:shadow-accent/10'>
-                <h2 className='mb-2 text-xl font-semibold text-white'>{post.title}</h2>
-                <p className='mb-4 text-zinc-400'>{post.description}</p>
-                <div className='flex items-center justify-between text-sm text-zinc-500'>
-                  <span>{post.author}</span>
-                  <time dateTime={post.date.toString()}>
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric'
-                    })}
-                  </time>
-                </div>
-              </Surface>
-            </Link>
+            <BlogCard key={post.url} post={post} />
           ))}
         </div>
 

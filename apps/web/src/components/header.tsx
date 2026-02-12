@@ -107,7 +107,9 @@ export default function Header() {
                 className='flex h-16 w-full items-center gap-3 rounded-lg px-4 outline-1 outline-neutral-700 backdrop-blur-md'
                 style={{ scale: scale }}
               >
-                <img src='/logo-small.svg' alt='Logo' className='h-16 w-auto' />
+                <Link to='/' className='flex items-center'>
+                  <img src='/logo-small.svg' alt='Logo' className='h-16 w-auto' />
+                </Link>
                 <div className='flex-1' />
                 <Link
                   to='/blog'

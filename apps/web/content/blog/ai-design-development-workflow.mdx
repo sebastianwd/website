@@ -1,0 +1,164 @@
+---
+title: AI in Development and the Design–Development Handoff
+description: As AI accelerates coding, the handoff between design and frontend remains a bottleneck.
+author: Sebastian Luque
+date: 2026-02-12
+image: /b/figma-design-to-code.jpg
+---
+
+Companies are increasingly investing in AI to support everyday development workflows. Developers are encouraged to use AI tools to scaffold features, refactor code, and accelerate delivery.
+
+However, the design-to-development workflow remains mostly unchanged in most teams. Designers still create UI in isolation, frontend engineers still translate designs manually into code (or if using AI, it's still an inefficient process of sending screenshots and tweaking inaccurate results), and alignment still depends heavily on interpretation and back-and-forth communication.
+
+This creates an imbalance: AI accelerates coding, but the handoff between design and frontend continues to introduce friction, specially at the start of a project. If AI is becoming part of our engineering foundation, it should also become part of how design and development connect.
+
+## The Problem
+
+With each new project, we tend to rebuild parts of the design system from scratch. New Figma kits are created, components are redefined, and frontend teams reimplement the same UI patterns again: buttons, inputs, modals, dropdowns, form validation flows.
+
+The issue isn't individual performance; it's the system itself.
+
+There is often a disconnect between:
+
+- What designers have available in Figma
+
+- What frontend teams already support in code
+
+- What AI generates when it isn't constrained by a shared system
+
+Complex components are sometimes simplified or postponed early in a project because their implementation cost is unclear. Meanwhile, frontend engineers may already have accessible, production-ready solutions, just not formally aligned with the design layer.
+
+AI adds another dimension to this problem. When developers use AI to generate UI without a shared component baseline, the output can become inconsistent, unstructured, or disconnected from existing patterns. Instead of accelerating development, AI can introduce variation and technical debt.
+
+At its core, the issue is duplication and translation:
+
+Design recreates.
+
+Frontend reinterprets.
+
+AI improvises.
+
+What's missing is a shared foundation that aligns all three from the beginning.
+
+## The Proposed Workflow
+
+### 1. Establish a Shared Component Baseline
+
+Adopt a [shadcn](https://ui.shadcn.com/)-based foundation as the starting point for all projects.
+
+<Image src='/b/shadcn-landing.jpg' alt='Shadcn UI landing page' centered maxWidth={800} />
+
+This gives us:
+
+- Accessible primitives built on [Radix UI](https://www.radix-ui.com/) / [Base UI](https://base-ui.com/) or any other accessible UI library
+
+- Standardized interaction patterns (focus states, keyboard navigation, ARIA compliance)
+
+- Fully customizable [theming](https://ui.shadcn.com/docs/theming)
+
+- Components that we own and can extend
+
+This is _<u>not</u>_ a rigid framework. It's a controlled foundation that removes the need to reinvent solved UI behavior.
+
+### 2. Mirror the System in Figma
+
+Design components should reflect the same primitives used in code: Buttons, Inputs, Dialogs, Selects, Tabs, Form elements, etc.
+
+This doesn't mean building everything from scratch in Figma. We can leverage existing shadcn-based Figma kits, such as [Shadcraft](https://shadcraft.com/), which already mirror the structure and philosophy of shadcn components. These kits provide a ready-to-use foundation that aligns closely with the implementation layer and are fully customizable.
+
+<Image src='/b/shadcraft.jpg' alt='Shadcraft Figma kit' centered maxWidth={800} caption='Shadcraft Figma kit' />
+
+This way, designers operate within realistic constraints from day one, without limiting visual creativity. At the same time, developers can begin implementing features immediately, without spending time recreating foundational components from scratch.
+
+### 3. Sync Figma and Code (Tokens + Themes)
+
+After we standardize on shadcn components and mirror them in Figma (e.g., with Shadcraft), the next problem is drift: colors, typography, radius, and semantic tokens slowly diverge between Figma and the codebase. When that happens, handoff turns into guesswork, and it also makes AI-assisted UI generation harder because we have to manually explain how tokens and variables should map to the implementation.
+
+<Image
+  src='/b/shadcraft-export.jpg'
+  alt='Exporting CSS variables from shadcn to Figma'
+  centered
+  maxWidth={400}
+  caption='Exporting CSS variables from shadcn to Figma'
+/>
+
+Tools like the Shadcraft Figma plugin helps close that gap by letting us import and export CSS variables that are compatible with shadcn and Tailwind theming. This keeps tokens consistent across design and implementation and makes branding updates plus ongoing component and theme changes much easier.
+
+Example of a CSS variable export from the Shadcraft Figma plugin:
+
+```css
+:root {
+  --background: oklch(0.9900 0.0000 89.8756);
+  --foreground: oklch(0.0000 0.0000 0.0000);
+  --accent: oklch(0.9400 0.0000 89.8756);
+  --accent-foreground: oklch(0.0000 0.0000 0.0000);
+  --muted: oklch(0.9702 0.0000 89.8756);
+  --muted-foreground: oklch(0.4386 0.0000 89.8756);
+  --card: oklch(1.0000 0.0000 89.8756);
+  --card-foreground: oklch(0.0000 0.0000 0.0000);
+  --popover: oklch(0.9900 0.0000 89.8756);
+  --popover-foreground: oklch(0.0000 0.0000 0.0000);
+  --border: oklch(0.9200 0.0000 89.8756);
+  --input: oklch(0.9400 0.0000 89.8756);
+  --primary: oklch(0.0000 0.0000 0.0000);
+  --primary-foreground: oklch(1.0000 0.0000 89.8756);
+  --secondary: oklch(0.9400 0.0000 89.8756);
+  --secondary-foreground: oklch(0.0000 0.0000 0.0000);
+  --destructive: oklch(0.6300 0.1900 23.0300);
+  --destructive-foreground: oklch(1.0000 0.0000 89.8756);
+  --ring: oklch(0.0000 0.0000 0.0000);
+  --shadow-xs: oklch(0.0000 0.0000 0.0000 / 0.18000000715255737);
+  --opacity-90: oklch(1.0000 0.0000 89.8756 / 0.10000000149011612);
+  ...
+```
+
+### 4. Use Figma MCP to Keep AI Inside the System
+
+Once components are standardized (shadcn) and design tokens are synced (Figma ↔ code), we can use the Figma MCP server to make AI generation actually reliable.
+
+The key is constraints. Instead of asking AI to “build this UI” and hoping it invents the right patterns, we give it structured context from Figma and clear rules such as:
+
+- Use existing shadcn components only
+
+- Follow the project token names and theme variables
+
+- Do not create custom base components for buttons, inputs, dialogs, selects, etc.
+
+With MCP, AI can read the design intent and produce high-fidelity code that maps to our real primitives. That means the output is immediately reusable and consistent with our system. Developers can start implementing features faster because they iterate on generated scaffolding instead of rewriting UI foundations, and designers see fewer surprises because the code is built from the same components they used in Figma.
+
+<Image
+  src='/b/figma-mcp.png'
+  alt='Figma MCP server on Cursor'
+  centered
+  maxWidth={800}
+  caption='Figma MCP server on Cursor'
+/>
+
+### 5. Handling Deviations: A Simple “Design System Changelog”
+
+Even with a shared shadcn baseline, some projects will need exceptions. The problem is not customizing. The problem is customizing without a clear record, which creates back and forth, missed details, and guessing.
+
+A lightweight solution is to maintain a Design System Changelog per project. Designers (and optionally frontend) use it to document anything that deviates from the base shadcn system, for example:
+
+- New components added on top of the baseline
+
+- Modifications to existing components (structure, behavior, variants, states)
+
+- Token changes (new semantic roles, updated scales, theme-specific rules)
+
+- Interaction notes for complex components (keyboard behavior, validation, empty/loading states)
+
+This gives developers one place to look for “what’s different in this project,” so implementation starts from the baseline and applies only the documented deltas. It reduces meetings, avoids interpretation, and makes updates easier because changes are explicit and traceable.
+
+<Image src='/b/changelog-example.png' alt='Changelog example' centered maxWidth={800} caption='Changelog example' />
+
+## Conclusion
+
+To summarize, the goal is simple: use shadcn as a shared baseline, mirror it in Figma, keep tokens synced, and use MCP to constrain AI so it generates system-compliant UI from the start. This reduces handoff friction and speeds up iteration, while still leaving plenty of room for each customer’s brand and product needs. If we’re standardizing how developers use AI, we should also empower designers with the same system-aware workflow so the whole pipeline moves faster together.
+
+## Resources
+
+- [Shadcn UI](https://ui.shadcn.com/)
+- [Guide to the Figma MCP server](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server)
+- [Shadcraft](https://shadcraft.com/)
+- [Tweakcn](https://tweakcn.com/)

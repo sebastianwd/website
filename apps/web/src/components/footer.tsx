@@ -38,8 +38,11 @@ export function Footer() {
           {/* Right */}
           <div className='flex basis-1/3 justify-center gap-12 md:justify-end'>
             <nav className='flex flex-col gap-1 text-sm'>
-              <Link to='/' className='text-zinc-200 hover:text-zinc-200'>
+              <Link to='/' className='text-zinc-400 hover:text-zinc-200'>
                 Home
+              </Link>
+              <Link to='/blog' className='text-zinc-400 hover:text-zinc-200'>
+                Blog
               </Link>
             </nav>
             <PageViews slug='/' />

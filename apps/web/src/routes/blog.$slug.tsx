@@ -5,6 +5,8 @@ import browserCollections from 'fumadocs-mdx:collections/browser'
 import defaultMdxComponents from 'fumadocs-ui/mdx'
 import { Suspense } from 'react'
 
+import { BlogImage } from '~/components/blog-image'
+
 export const Route = createFileRoute('/blog/$slug')({
   component: BlogPost,
   loader: async ({ params }) => {
@@ -40,7 +42,7 @@ const clientLoader = browserCollections.blogPosts.createClientLoader({
         <h1 className='mb-2 text-4xl font-bold'>{frontmatter.title}</h1>
         <p className='mb-4 text-lg text-fd-muted-foreground'>{frontmatter.description}</p>
         <article className='prose'>
-          <MDX components={defaultMdxComponents} />
+          <MDX components={{ ...defaultMdxComponents, Image: BlogImage }} />
         </article>
       </>
     )
@@ -52,7 +54,7 @@ function BlogPost() {
 
   return (
     <div className='relative overflow-hidden'>
-      <section className='container mx-auto px-6 py-12 lg:max-w-5xl'>
+      <section className='container mx-auto px-6 pt-16 pb-12 lg:max-w-5xl'>
         <Link
           to='/blog'
           className='mb-8 inline-flex items-center gap-2 text-fd-muted-foreground hover:text-fd-foreground'

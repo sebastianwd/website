@@ -104,7 +104,7 @@ export default function Header() {
               style={{ marginTop: marginTop }}
             >
               <motion.div
-                className='flex h-16 w-full items-center gap-3 rounded-lg px-4 outline-1 outline-neutral-700 backdrop-blur-md'
+                className='flex h-16 w-full items-center gap-3 rounded-lg px-4 outline-1 outline-neutral-700 backdrop-blur-md will-change-transform'
                 style={{ scale: scale }}
               >
                 <Link to='/' className='flex items-center'>
@@ -113,9 +113,8 @@ export default function Header() {
                 <div className='flex-1' />
                 <Link
                   to='/blog'
-                  className='flex items-center gap-2 px-3 py-2 text-sm font-medium text-zinc-300 transition-colors hover:text-accent'
+                  className='mr-8 flex items-center px-2.5 py-1.5 font-semibold text-white transition-colors hover:text-white/90'
                 >
-                  <Icon icon='mdi:post-outline' className='size-5' />
                   <span className='hidden sm:inline'>Blog</span>
                 </Link>
                 <ColorPicker />
@@ -123,8 +122,10 @@ export default function Header() {
             </motion.div>
           </div>
         </div>
-        <CyberBorder1 className='size-full' />
       </header>
+      <div className='absolute inset-x-0 top-20'>
+        <CyberBorder1 className='size-full' />
+      </div>
     </>
   )
 }

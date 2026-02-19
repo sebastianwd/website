@@ -9,6 +9,6 @@ export const blogPosts = defineCollections({
     description: z.string(),
     author: z.string(),
     date: z.string().date().or(z.date()),
-    image: z.string().url().optional()
+    image: z.string().optional()
   })
 })

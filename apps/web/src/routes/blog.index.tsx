@@ -90,7 +90,7 @@ function BlogIndex() {
 
   return (
     <div className='relative overflow-hidden'>
-      <section className='container mx-auto px-6 pt-10 pb-20 lg:max-w-5xl'>
+      <section className='container mx-auto px-6 pt-16 pb-20 lg:max-w-5xl'>
         <div className='mb-8'>
           <h1 className='mb-4 flex flex-wrap items-center gap-x-1 font-clvtc text-4xl tracking-wider text-accent'>
             <WordAnimator tag='span' words='Blog' className='h-9 text-accent' />

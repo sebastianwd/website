@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react'
 import { Button } from '@repo/ui/components/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@repo/ui/components/popover'
+import { Link } from '@tanstack/react-router'
 import { clamp } from 'es-toolkit'
 import { motion, useMotionValue, useMotionValueEvent, useScroll, useTransform } from 'motion/react'
 import { useEffect, useState } from 'react'
@@ -103,18 +104,28 @@ export default function Header() {
               style={{ marginTop: marginTop }}
             >
               <motion.div
-                className='flex h-16 w-full items-center gap-3 rounded-lg px-4 outline-1 outline-neutral-700 backdrop-blur-md'
+                className='flex h-16 w-full items-center gap-3 rounded-lg px-4 outline-1 outline-neutral-700 backdrop-blur-md will-change-transform'
                 style={{ scale: scale }}
               >
-                <img src='/logo-small.svg' alt='Logo' className='h-16 w-auto' />
+                <Link to='/' className='flex items-center'>
+                  <img src='/logo-small.svg' alt='Logo' className='h-16 w-auto' />
+                </Link>
                 <div className='flex-1' />
+                <Link
+                  to='/blog'
+                  className='mr-8 flex items-center px-2.5 py-1.5 font-semibold text-white transition-colors hover:text-white/90'
+                >
+                  <span className='hidden sm:inline'>Blog</span>
+                </Link>
                 <ColorPicker />
               </motion.div>
             </motion.div>
           </div>
         </div>
-        <CyberBorder1 className='size-full' />
       </header>
+      <div className='absolute inset-x-0 top-20'>
+        <CyberBorder1 className='size-full' />
+      </div>
     </>
   )
 }

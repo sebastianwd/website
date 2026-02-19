@@ -9,6 +9,7 @@
     "**/routeTree.gen.ts": true,
     "**/.tanstack/**/*": true,
     "pnpm-lock.yaml": true,
+    "**/.source/**/*": true,
   },
   "search.exclude": {
     "**/routeTree.gen.ts": true,

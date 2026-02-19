@@ -3,6 +3,7 @@ import { createServerFn } from '@tanstack/react-start'
 
 import { Surface } from '~/components/surface'
 import { WordAnimator } from '~/components/word-animator'
+import { SITE_NAME, SITE_URL } from '~/lib/site'
 
 function titleWithAccent(title: string) {
   const words = title.trim().split(/\s+/)
@@ -60,12 +61,28 @@ function BlogCard({
   )
 }
 
+const BLOG_DESCRIPTION = 'Some of my experiences and learnings about web development.'
+
 export const Route = createFileRoute('/blog/')({
   component: BlogIndex,
   loader: async () => {
     const data = await serverLoader()
     return data
-  }
+  },
+  head: () => ({
+    meta: [
+      { title: `Blog | ${SITE_NAME}` },
+      { name: 'description', content: BLOG_DESCRIPTION },
+      { property: 'og:title', content: `Blog | ${SITE_NAME}` },
+      { property: 'og:description', content: BLOG_DESCRIPTION },
+      { property: 'og:url', content: `${SITE_URL}/blog` },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: `Blog | ${SITE_NAME}` },
+      { name: 'twitter:description', content: BLOG_DESCRIPTION }
+    ],
+    links: [{ rel: 'canonical', href: `${SITE_URL}/blog` }]
+  })
 })
 
 const serverLoader = createServerFn({

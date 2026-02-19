@@ -13,6 +13,7 @@ import { LandingLogo } from '~/components/graphics'
 import { Surface } from '~/components/surface'
 import { WordAnimator } from '~/components/word-animator'
 import { projects } from '~/data/projects'
+import { SITE_URL } from '~/lib/site'
 
 const SOCIAL_ICONS = ['mdi:linkedin', 'mdi:github', 'mdi:email', 'mdi:open-in-new'] as const
 
@@ -54,7 +55,10 @@ export const Route = createFileRoute('/')({
   component: App,
   loader: async ({ context }) => {
     await context.queryClient.ensureQueryData(context.orpc.example.queryOptions())
-  }
+  },
+  head: () => ({
+    links: [{ rel: 'canonical', href: SITE_URL }]
+  })
 })
 
 function TechItem({ icon, label }: { icon: string; label: string }) {

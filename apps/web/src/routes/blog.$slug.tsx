@@ -6,6 +6,7 @@ import defaultMdxComponents from 'fumadocs-ui/mdx'
 import { Suspense } from 'react'
 
 import { BlogImage } from '~/components/blog-image'
+import { SITE_NAME, SITE_URL } from '~/lib/site'
 
 export const Route = createFileRoute('/blog/$slug')({
   component: BlogPost,
@@ -13,6 +14,43 @@ export const Route = createFileRoute('/blog/$slug')({
     const data = await serverLoader({ data: params.slug })
     await clientLoader.preload(data.path)
     return data
+  },
+  head: ({ loaderData, params }) => {
+    if (!loaderData) return {}
+    const url = `${SITE_URL}/blog/${params.slug}`
+    const image = loaderData.image ? `${SITE_URL}${loaderData.image}` : undefined
+    const meta = [
+      { title: `${loaderData.title} | ${SITE_NAME}` },
+      { name: 'description', content: loaderData.description },
+      { property: 'og:type', content: 'article' as const },
+      { property: 'og:title', content: loaderData.title },
+      { property: 'og:description', content: loaderData.description },
+      { property: 'og:url', content: url },
+      ...(image ? [{ property: 'og:image', content: image } as const] : []),
+      { name: 'twitter:card', content: 'summary_large_image' as const },
+      { name: 'twitter:title', content: loaderData.title },
+      { name: 'twitter:description', content: loaderData.description },
+      ...(image ? [{ name: 'twitter:image', content: image } as const] : [])
+    ]
+    const scripts = [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: loaderData.title,
+          description: loaderData.description,
+          ...(image && { image }),
+          author: { '@type': 'Person', name: loaderData.author },
+          datePublished: new Date(loaderData.date).toISOString()
+        })
+      }
+    ]
+    return {
+      meta,
+      links: [{ rel: 'canonical', href: url }],
+      scripts
+    }
   }
 })
 
@@ -31,12 +69,13 @@ const serverLoader = createServerFn({
       title: page.data.title,
       description: page.data.description,
       author: page.data.author,
-      date: page.data.date
+      date: page.data.date,
+      image: page.data.image
     }
   })
 
 const clientLoader = browserCollections.blogPosts.createClientLoader({
-  component({ toc, frontmatter, default: MDX }) {
+  component({ toc: _toc, frontmatter, default: MDX }) {
     return (
       <>
         <h1 className='mb-2 text-4xl font-bold'>{frontmatter.title}</h1>

@@ -80,7 +80,7 @@ const clientLoader = browserCollections.blogPosts.createClientLoader({
       <>
         <h1 className='mb-2 text-4xl font-bold'>{frontmatter.title}</h1>
         <p className='mb-4 text-lg text-fd-muted-foreground'>{frontmatter.description}</p>
-        <article className='prose'>
+        <article className='prose max-w-full [&_img]:object-contain'>
           <MDX components={{ ...defaultMdxComponents, Image: BlogImage }} />
         </article>
       </>
@@ -124,10 +124,7 @@ function BlogPost() {
             })}
           </p>
         </div>
-
-        <Suspense fallback={<div className='text-fd-muted-foreground'>Loading...</div>}>
-          {clientLoader.useContent(data.path)}
-        </Suspense>
+        {clientLoader.useContent(data.path)}
       </section>
     </div>
   )

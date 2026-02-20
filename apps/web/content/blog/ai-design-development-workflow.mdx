@@ -46,7 +46,7 @@ What's missing is a shared foundation that aligns all three from the beginning.
 
 Adopt a [shadcn](https://ui.shadcn.com/)-based foundation as the starting point for all projects.
 
-<Image src='/b/shadcn-landing.jpg' alt='Shadcn UI landing page' centered maxWidth={800} />
+<Image src='/b/shadcn-landing.jpg' alt='Shadcn UI landing page' centered caption='Shadcn UI landing page' />
 
 This gives us:
 
@@ -66,7 +66,7 @@ Design components should reflect the same primitives used in code: Buttons, Inpu
 
 This doesn't mean building everything from scratch in Figma. We can leverage existing shadcn-based Figma kits, such as [Shadcraft](https://shadcraft.com/), which already mirror the structure and philosophy of shadcn components. These kits provide a ready-to-use foundation that aligns closely with the implementation layer and are fully customizable.
 
-<Image src='/b/shadcraft.jpg' alt='Shadcraft Figma kit' centered maxWidth={800} caption='Shadcraft Figma kit' />
+<Image src='/b/shadcraft.jpg' alt='Shadcraft Figma kit' centered caption='Shadcraft Figma kit' />
 
 This way, designers operate within realistic constraints from day one, without limiting visual creativity. At the same time, developers can begin implementing features immediately, without spending time recreating foundational components from scratch.
 
@@ -78,7 +78,7 @@ After we standardize on shadcn components and mirror them in Figma (e.g., with S
   src='/b/shadcraft-export.jpg'
   alt='Exporting CSS variables from shadcn to Figma'
   centered
-  maxWidth={400}
+  className='md:max-w-sm'
   caption='Exporting CSS variables from shadcn to Figma'
 />
 
@@ -126,13 +126,7 @@ The key is constraints. Instead of asking AI to “build this UI” and hoping i
 
 With MCP, AI can read the design intent and produce high-fidelity code that maps to our real primitives. That means the output is immediately reusable and consistent with our system. Developers can start implementing features faster because they iterate on generated scaffolding instead of rewriting UI foundations, and designers see fewer surprises because the code is built from the same components they used in Figma.
 
-<Image
-  src='/b/figma-mcp.png'
-  alt='Figma MCP server on Cursor'
-  centered
-  maxWidth={800}
-  caption='Figma MCP server on Cursor'
-/>
+<Image src='/b/figma-mcp.png' alt='Figma MCP server on Cursor' centered caption='Figma MCP server on Cursor' />
 
 ### 5. Handling Deviations: A Simple “Design System Changelog”
 
@@ -150,7 +144,7 @@ A lightweight solution is to maintain a Design System Changelog per project. Des
 
 This gives developers one place to look for “what’s different in this project,” so implementation starts from the baseline and applies only the documented deltas. It reduces meetings, avoids interpretation, and makes updates easier because changes are explicit and traceable.
 
-<Image src='/b/changelog-example.png' alt='Changelog example' centered maxWidth={800} caption='Changelog example' />
+<Image src='/b/changelog-example.png' alt='Changelog example' centered caption='Changelog example' />
 
 ## Conclusion
 

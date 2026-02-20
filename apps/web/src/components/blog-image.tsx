@@ -21,7 +21,7 @@ export function BlogImage({ src, alt, width, height, maxWidth, centered = false,
     <img
       src={src}
       alt={alt}
-      className={cn('rounded-lg', centered && 'mx-auto block', className)}
+      className={cn('max-w-full rounded-lg', centered && 'mx-auto block', className)}
       style={Object.keys(style).length > 0 ? style : undefined}
     />
   )

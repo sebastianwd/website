@@ -21,7 +21,7 @@
     "*.tsx",
     "*.mjs",
     "src/**/*",
-    ".source/**/*"
+    ".content-collections/**/*"
   ],
   "compilerOptions": {
     "noEmit": true,
@@ -29,8 +29,8 @@
       "~/*": [
         "./src/*"
       ],
-      "fumadocs-mdx:collections/*": [
-        "./.source/*"
+      "content-collections": [
+        "./.content-collections/generated"
       ]
     }
   },

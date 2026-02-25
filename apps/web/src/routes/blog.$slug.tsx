@@ -1,19 +1,15 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import { useFumadocsLoader } from 'fumadocs-core/source/client'
-import browserCollections from 'fumadocs-mdx:collections/browser'
-import defaultMdxComponents from 'fumadocs-ui/mdx'
-import { Suspense } from 'react'
 
-import { BlogImage } from '~/components/blog-image'
+import { MDX } from '~/components/mdx'
+import { getPostBySlug } from '~/lib/posts'
 import { SITE_NAME, SITE_URL } from '~/lib/site'
 
 export const Route = createFileRoute('/blog/$slug')({
-  component: BlogPost,
-  loader: async ({ params }) => {
-    const data = await serverLoader({ data: params.slug })
-    await clientLoader.preload(data.path)
-    return data
+  loader: ({ params }) => {
+    const post = getPostBySlug(params.slug)
+    // eslint-disable-next-line @typescript-eslint/only-throw-error
+    if (!post) throw notFound()
+    return post
   },
   head: ({ loaderData, params }) => {
     if (!loaderData) return {}
@@ -51,53 +47,17 @@ export const Route = createFileRoute('/blog/$slug')({
       links: [{ rel: 'canonical', href: url }],
       scripts
     }
-  }
-})
-
-const serverLoader = createServerFn({
-  method: 'GET'
-})
-  .inputValidator((slug: string) => slug)
-  .handler(async ({ data: slug }) => {
-    const { blog } = await import('~/lib/source')
-    const page = blog.getPage([slug])
-    // eslint-disable-next-line @typescript-eslint/only-throw-error
-    if (!page) throw notFound()
-
-    return {
-      path: page.path,
-      title: page.data.title,
-      description: page.data.description,
-      author: page.data.author,
-      date: page.data.date,
-      image: page.data.image
-    }
-  })
-
-const clientLoader = browserCollections.blogPosts.createClientLoader({
-  component({ toc: _toc, frontmatter, default: MDX }) {
-    return (
-      <>
-        <h1 className='mb-2 text-4xl font-bold'>{frontmatter.title}</h1>
-        <p className='mb-4 text-lg text-fd-muted-foreground'>{frontmatter.description}</p>
-        <article className='prose max-w-full [&_img]:object-contain'>
-          <MDX components={{ ...defaultMdxComponents, Image: BlogImage }} />
-        </article>
-      </>
-    )
-  }
+  },
+  component: BlogPost
 })
 
 function BlogPost() {
-  const data = useFumadocsLoader(Route.useLoaderData())
+  const post = Route.useLoaderData()
 
   return (
     <div className='relative overflow-hidden'>
       <section className='container mx-auto px-6 pt-16 pb-12 lg:max-w-5xl'>
-        <Link
-          to='/blog'
-          className='mb-8 inline-flex items-center gap-2 text-fd-muted-foreground hover:text-fd-foreground'
-        >
+        <Link to='/blog' className='mb-8 inline-flex items-center gap-2 text-zinc-400 hover:text-zinc-200'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='16'
@@ -114,25 +74,24 @@ function BlogPost() {
           Back to Blog
         </Link>
 
+        <h1 className='mb-2 text-4xl font-bold'>{post.title}</h1>
+        <p className='mb-4 text-lg text-zinc-400'>{post.description}</p>
+
         <div className='mb-8'>
-          <p className='text-sm text-fd-muted-foreground'>
-            By {data.author} •{' '}
-            {new Date(data.date).toLocaleDateString('en-US', {
+          <p className='text-sm text-zinc-400'>
+            By {post.author} •{' '}
+            {new Date(post.date).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
               day: 'numeric'
             })}
           </p>
         </div>
-        {clientLoader.useContent(data.path)}
+
+        <article className='prose-ui w-full max-w-full [&_img]:object-contain'>
+          <MDX content={post.content} mdast={post.mdast} />
+        </article>
       </section>
     </div>
   )
-}
-
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const { blog } = await import('~/lib/source')
-  return blog.getPages().map((page) => ({
-    slug: page.slugs[0]!
-  }))
 }

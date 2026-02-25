@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
 
 import { Surface } from '~/components/surface'
 import { WordAnimator } from '~/components/word-animator'
+import { getAllPosts } from '~/lib/posts'
 import { SITE_NAME, SITE_URL } from '~/lib/site'
 
 function titleWithAccent(title: string) {
@@ -23,7 +23,7 @@ function BlogCard({
     url: string
     title: string
     description: string
-    date: string | Date
+    date: string
     image?: string
   }
 }) {
@@ -64,10 +64,18 @@ function BlogCard({
 const BLOG_DESCRIPTION = 'Some of my experiences and learnings about web development.'
 
 export const Route = createFileRoute('/blog/')({
-  component: BlogIndex,
-  loader: async () => {
-    const data = await serverLoader()
-    return data
+  loader: () => {
+    const posts = getAllPosts()
+    return {
+      posts: posts.map((post) => ({
+        url: `/blog/${post.slug}`,
+        title: post.title,
+        description: post.description,
+        author: post.author,
+        date: post.date,
+        image: post.image
+      }))
+    }
   },
   head: () => ({
     meta: [
@@ -82,24 +90,8 @@ export const Route = createFileRoute('/blog/')({
       { name: 'twitter:description', content: BLOG_DESCRIPTION }
     ],
     links: [{ rel: 'canonical', href: `${SITE_URL}/blog` }]
-  })
-})
-
-const serverLoader = createServerFn({
-  method: 'GET'
-}).handler(async () => {
-  const { blog } = await import('~/lib/source')
-  const posts = blog.getPages()
-  return {
-    posts: posts.map((post) => ({
-      url: post.url,
-      title: post.data.title,
-      description: post.data.description,
-      author: post.data.author,
-      date: post.data.date,
-      image: post.data.image
-    }))
-  }
+  }),
+  component: BlogIndex
 })
 
 function BlogIndex() {

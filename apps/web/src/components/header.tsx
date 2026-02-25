@@ -113,9 +113,9 @@ export default function Header() {
                 <div className='flex-1' />
                 <Link
                   to='/blog'
-                  className='mr-8 flex items-center px-2.5 py-1.5 font-semibold text-white transition-colors hover:text-white/90'
+                  className='mr-4 flex items-center px-2.5 py-1.5 font-semibold text-white transition-colors hover:text-white/90 sm:mr-8'
                 >
-                  <span className='hidden sm:inline'>Blog</span>
+                  Blog
                 </Link>
                 <ColorPicker />
               </motion.div>

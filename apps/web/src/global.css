@@ -4,9 +4,27 @@
 @import '../../../packages/ui/src/global.css';
 @source '../../../packages/ui';
 
-/* Fumadocs styles */
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
+/* Prose UI for MDX content */
+@import '@prose-ui/style/prose-ui.css';
+@import '@prose-ui/style/katex.min.css';
+
+/* Override Prose UI to match site theme - transparent background so it inherits page gradient */
+.prose-ui {
+  --p-body-color-bg: transparent;
+  --p-color-bg: transparent;
+  --p-color-bg-surface1: oklch(0.15 0 0 / 0.5);
+  --p-color-bg-surface2: oklch(0.18 0 0 / 0.6);
+  --p-color-text: oklch(0.9 0 0);
+  --p-color-text-strong: oklch(0.98 0 0);
+  --p-color-text-muted: oklch(0.65 0 0);
+  --p-color-text-xmuted: oklch(0.55 0 0);
+  --p-color-text-accent: var(--accent);
+  --p-link-text-color: var(--accent);
+  --p-color-border: oklch(1 0 0 / 0.08);
+  --p-color-border-subtle: oklch(1 0 0 / 0.05);
+  --p-h1-color: var(--accent);
+  --p-h2-color: var(--accent);
+}
 
 html,
 body {

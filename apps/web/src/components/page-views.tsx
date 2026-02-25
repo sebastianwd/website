@@ -1,4 +1,4 @@
-import { client, orpc } from '@repo/api/lib/orpc.client'
+import { client, orpc } from '@repo/api/lib/orpc-client'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 

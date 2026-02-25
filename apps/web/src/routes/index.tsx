@@ -1,5 +1,5 @@
 import { Icon, loadIcons } from '@iconify/react'
-import { orpc } from '@repo/api/lib/orpc.client'
+import { orpc } from '@repo/api/lib/orpc-client'
 import { buttonVariants } from '@repo/ui/components/button'
 import { cn } from '@repo/ui/utils/cn'
 import { useSuspenseQuery } from '@tanstack/react-query'

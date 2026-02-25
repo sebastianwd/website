@@ -2,7 +2,7 @@ import { Redis } from '@upstash/redis'
 import dayjs from 'dayjs'
 import { z } from 'zod'
 
-import { o } from '../lib/orpc.server'
+import { o } from '../lib/orpc-server'
 
 const slugInput = z.object({ slug: z.string().optional().default('/') })
 

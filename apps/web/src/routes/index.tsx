@@ -1,11 +1,9 @@
 import { Icon, loadIcons } from '@iconify/react'
-import { orpc } from '@repo/api/lib/orpc-client'
 import { buttonVariants } from '@repo/ui/components/button'
 import { cn } from '@repo/ui/utils/cn'
-import { useSuspenseQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'motion/react'
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 
 import { BackgroundPattern } from '~/components/background-pattern'
 import { FeaturedProject } from '~/components/featured-project'
@@ -53,9 +51,6 @@ const experienceData = [
 
 export const Route = createFileRoute('/')({
   component: App,
-  loader: async ({ context }) => {
-    await context.queryClient.ensureQueryData(context.orpc.example.queryOptions())
-  },
   head: () => ({
     links: [{ rel: 'canonical', href: SITE_URL }]
   })
@@ -71,7 +66,6 @@ function TechItem({ icon, label }: { icon: string; label: string }) {
 }
 
 function App() {
-  useSuspenseQuery(orpc.example.queryOptions())
   useEffect(() => {
     loadIcons([...SOCIAL_ICONS])
   }, [])

@@ -146,6 +146,14 @@ This gives developers one place to look for “what’s different in this projec
 
 <Image src='/b/changelog-example.png' alt='Changelog example' centered caption='Changelog example' />
 
+## Using skills to keep code quality high
+
+So far, everything in this workflow has been about aligning design and implementation. The last missing piece is keeping the **code the agent writes** aligned with your standards too.
+
+If you’re using an AI assistant while building these flows, you can layer in skills like [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) to keep quality guardrails in place. Instead of the model defaulting to the “average React code it has seen on the internet” (waterfalls, prop drilling, bloated effects), skills such as `react-best-practices`, `web-design-guidelines`, and `composition-patterns` actively steer it toward higher‑quality patterns every time it proposes a change.
+
+In practice, that means the same way shadcn and your design tokens keep the visual system coherent, skills keep the **implementation details** coherent: less copy‑pasted anti‑patterns, more idiomatic composition, fewer regressions, and a feedback loop that stays fast even as more of the work is delegated to agents.
+
 ## Conclusion
 
 To summarize, the goal is simple: use shadcn as a shared baseline, mirror it in Figma, keep tokens synced, and use MCP to constrain AI so it generates system-compliant UI from the start. This reduces handoff friction and speeds up iteration, while still leaving plenty of room for each customer’s brand and product needs. If we’re standardizing how developers use AI, we should also empower designers with the same system-aware workflow so the whole pipeline moves faster together.

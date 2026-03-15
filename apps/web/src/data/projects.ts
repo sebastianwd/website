@@ -18,7 +18,7 @@ export const projects = [
       url: '/assets/redditgrab-pres.mp4'
     },
     description:
-      'A Chrome/Firefox extension that allows you to download images and videos from Reddit in an automated way. Over 1000 downloads.',
+      'A Chrome/Firefox extension that allows you to download images and videos from Reddit in an automated way. Over 3500 users.',
     repo: 'https://github.com/sebastianwd/redditgrab',
     url: '',
     stack: ['react', 'wxt', 'tailwind'] as const,
